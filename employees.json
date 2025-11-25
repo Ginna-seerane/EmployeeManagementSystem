@@ -1,0 +1,32 @@
+[
+    {
+        "id": "9807050983088",
+        "name": "ginna seerane",
+        "department": "IT",
+        "salary": 30000.0
+    },
+    {
+        "id": "E001",
+        "name": "John Doe",
+        "department": "Dales",
+        "salary": 50000.0
+    },
+    {
+        "id": "E002",
+        "name": "Jinna Smith",
+        "department": "IT",
+        "salary": 75000.0
+    },
+    {
+        "id": "E003",
+        "name": "Mike Granberry",
+        "department": "Finance",
+        "salary": 80000.0
+    },
+    {
+        "id": "TEST001",
+        "name": "Implementstion Test",
+        "department": "QA",
+        "salary": 40000.0
+    }
+]

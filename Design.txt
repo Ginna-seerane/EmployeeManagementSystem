@@ -1,0 +1,146 @@
+=============================================
+EMPLOYEE MANAGEMENT SYSTEM - DESIGN DOCUMENT
+=============================================
+
+BUSINESS REQUIREMENT:
+A small business needs a simple system to track employee details 
+(ID, Name, Department, Salary) and perform basic operations:
+1. Add new employees
+2. View all employees  
+3. Search for employees by ID
+4. Store data persistently between sessions
+
+PROGRAM STRUCTURE (UML Notation):
+
+Class: EmployeeManagementSystem
+--------------------------------
+Attributes:
+- data_file: string (path to the data file)
+
+Methods:
++ add_employee(employee_data): boolean
++ view_all_employees(): list
++ search_employee(emp_id): dictionary
+- load_data(): list
+- save_data(data): boolean
+
+Class: Employee
+---------------
+Attributes:
+- employee_id: string
+- employee_name: string 
+- employee_department: string
+- employee_salary: float
+
+Methods:
++ get_details(): dictionary
+
+RELATIONSHIP:
+EmployeeManagementSystem --> Employee (manages)
+
+=======================================
+LOGICAL FLOW - PSEUDO CODE:
+=======================================
+
+MAIN PROGRAM:
+BEGIN
+  SET data_file = "employees.json"
+  CREATE EmployeeManagementSystem object with data_file
+  
+  WHILE True DO
+    DISPLAY "=== Employee Management System ==="
+    DISPLAY "1. Add New Employee"
+    DISPLAY "2. View All Employees" 
+    DISPLAY "3. Search Employee by ID"
+    DISPLAY "4. Exit"
+    
+    GET user_choice from input
+    
+    IF user_choice = '1' THEN
+      CALL add_employee_workflow
+    ELSE IF user_choice = '2' THEN
+      CALL view_all_employees_workflow  
+    ELSE IF user_choice = '3' THEN
+      CALL search_employee_workflow
+    ELSE IF user_choice = '4' THEN
+      DISPLAY "Goodbye!"
+      EXIT program
+    ELSE
+      DISPLAY "Invalid choice, please try again"
+    END IF
+  END WHILE
+END
+
+
+=====================================
+ADD EMPLOYEE WORKFLOW:
+=====================================
+
+BEGIN
+  DISPLAY "--- Add New Employee ---"
+  
+  GET employee_id from input
+  GET employee_name from input
+  GET employee_department from input
+  GET salary_input from input
+  
+  TRY TO CONVERT salary_input to float
+  IF conversion fails THEN
+    DISPLAY "Error: Salary must be a number"
+    RETURN to main menu
+  END IF
+  
+  CREATE new_employee object with collected data
+  CALL system.add_employee(new_employee.get_details())
+  
+  IF successful THEN
+    DISPLAY "Employee added successfully!"
+  ELSE
+    DISPLAY "Failed to add employee"
+  END IF
+END
+
+===========================================
+DECISION TABLE - Input Validation:
+===========================================
+
+
+| Conditions                    | Valid Input | Invalid ID | Invalid Salary |
+|-------------------------------|-------------|------------|----------------|
+| ID is not empty               | Yes         | No         | Yes            |
+| ID is unique                  | Yes         | No         | Yes            |
+| Salary is a valid number      | Yes         | Yes        | No             |
+|-------------------------------|-------------|------------|----------------|
+| Actions                       |             |            |                |
+| Add employee to system        | Yes         | No         | No             |
+| Show error message            | No          | Yes        | Yes            |
+| Return to main menu           | No          | Yes        | Yes            |
+
+============================================
+DATA STRUCTURES AND ACCESS METHODS:
+============================================
+
+DATA STRUCTURE:
+- Primary data structure: List of dictionaries
+- Example:
+  [
+    {
+      "id": "E001",
+      "name": "John Doe", 
+      "department": "Sales",
+      "salary": 50000.00
+    },
+    {
+      "id": "E002",
+      "name": "Jane Smith",
+      "department": "IT",
+      "salary": 65000.00
+    }
+  ]
+
+ACCESS METHOD:
+- Storage: JSON file ("employees.json")
+- Method: File I/O with JSON serialization
+- Read: Load entire file, parse JSON to Python list
+- Write: Convert Python list to JSON, save entire file
+- This simulates a simple database table structure

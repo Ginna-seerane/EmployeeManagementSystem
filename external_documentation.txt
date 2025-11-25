@@ -1,0 +1,44 @@
+EXTERNAL DOCUMENTATION
+Employee Management System
+
+PROGRAM OVERVIEW:
+This system provides basic employee record management for small businesses.
+It allows adding, viewing, and searching employee records with persistent
+data storage in a JSON file.
+
+SYSTEM REQUIREMENTS:
+- Python 3.6 or higher
+- No additional packages required (uses only standard library)
+
+INSTALLATION:
+1. Copy employee_management_system.py to desired location
+2. Run: python employee_management_system.py
+3. The system will create employees.json automatically
+
+USER GUIDE:
+Main Menu Options:
+1. Add New Employee - Enter ID, Name, Department, and Salary
+2. View All Employees - Display all stored employees
+3. Search Employee by ID - Find specific employee by ID
+4. Exit - Close the program
+
+DATA FORMAT:
+Employees are stored in JSON format:
+[
+  {
+    "id": "E001",
+    "name": "John Doe",
+    "department": "Sales", 
+    "salary": 50000.0
+  }
+]
+
+ERROR HANDLING:
+- Prevents duplicate employee IDs
+- Validates salary is a numeric value
+- Handles file read/write errors gracefully
+
+CHANGES DURING TESTING:
+1. Added input validation for salary field
+2. Enhanced duplicate ID checking
+3. Improved error messages for better user experience

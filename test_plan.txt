@@ -1,0 +1,16 @@
+TEST STRATEGY FOR EMPLOYEE MANAGEMENT SYSTEM
+
+TESTING APPROACH:
+- Two testing cycles as required
+- Cycle 1: New data (fresh start)
+- Cycle 2: Existing data (using data from Cycle 1)
+
+TEST ENVIRONMENT:
+- Python 3.x
+- Fresh employees.json file for Cycle 1
+- Populated employees.json file for Cycle 2
+
+STRESS TESTING CONSIDERATION:
+For this small business system, formal stress testing is not required
+as the data volume is expected to be low (<1000 employees). However,
+we will test boundary conditions and error handling.
